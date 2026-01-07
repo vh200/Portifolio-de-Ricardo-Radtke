@@ -6,6 +6,7 @@ import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.jpg";
 import project6 from "@/assets/project-6.jpg";
+import project7 from "@/assets/project-7.jpg";
 
 const projects = [
   {
@@ -43,6 +44,12 @@ const projects = [
     category: "Travel",
     image: project6,
     type: "video" as const,
+  },
+  {
+    title: "Behind the Lens",
+    category: "Bastidores",
+    image: project7,
+    type: "photo" as const,
   },
 ];
 
