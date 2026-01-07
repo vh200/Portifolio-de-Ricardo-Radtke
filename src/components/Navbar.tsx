@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Youtube, Mail } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +15,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "Portfólio", href: "#projects" },
+    { name: "Início", href: "#hero" },
+    { name: "Projetos", href: "#projects" },
     { name: "Sobre", href: "#about" },
     { name: "Contato", href: "#contact" },
   ];
@@ -27,35 +27,50 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-background/95 backdrop-blur-sm" : "bg-transparent"
+        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-6">
-        <div className="flex flex-col items-center">
-          {/* Logo Centered */}
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
           <motion.a
             href="#hero"
-            className="font-display text-4xl md:text-5xl tracking-wider text-primary mb-6 hover:opacity-80 transition-opacity"
-            whileHover={{ scale: 1.02 }}
+            className="font-display text-2xl tracking-wider text-foreground hover:text-primary transition-colors"
+            whileHover={{ scale: 1.05 }}
           >
-            RR
+            RICARDO RADTKE
           </motion.a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-12">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a key={link.name} href={link.href} className="nav-link">
                 {link.name}
               </a>
             ))}
+            <div className="flex items-center gap-4 ml-4">
+              <a
+                href="https://instagram.com/ricardoradtke_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Youtube size={18} />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden absolute top-6 right-6 text-foreground hover:text-primary transition-colors"
+            className="md:hidden text-foreground hover:text-primary transition-colors"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
@@ -65,7 +80,7 @@ const Navbar = () => {
           animate={{ height: isOpen ? "auto" : 0, opacity: isOpen ? 1 : 0 }}
           className="md:hidden overflow-hidden"
         >
-          <div className="py-6 flex flex-col items-center gap-6">
+          <div className="py-6 flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -76,6 +91,22 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <div className="flex items-center gap-4 pt-4 border-t border-border">
+              <a
+                href="https://instagram.com/ricardoradtke_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="#"
+                className="text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Youtube size={20} />
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>
