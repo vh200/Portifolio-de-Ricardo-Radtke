@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
 
+import { RevealText } from "./RevealText";
+
 const ContactSection = () => {
   return (
     <section id="contact" className="py-24 bg-background relative overflow-hidden">
@@ -19,7 +21,8 @@ const ContactSection = () => {
             Contato
           </span>
           <h2 className="section-title">
-            VAMOS CRIAR <span className="text-gradient-gold">JUNTOS</span>
+            <RevealText text="VAMOS CRIAR" className="mr-3" />
+            <RevealText text="JUNTOS" className="text-white" delay={0.2} />
           </h2>
           <p className="text-muted-foreground mt-6 max-w-2xl mx-auto font-light">
             Tem um projeto em mente? Entre em contato para discutirmos como posso 

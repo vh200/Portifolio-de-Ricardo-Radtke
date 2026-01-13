@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Play, ExternalLink } from "lucide-react";
+import React, { useRef } from "react";
 
 interface ProjectCardProps {
   title: string;
@@ -10,15 +11,60 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, category, image, type, index }: ProjectCardProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!ref.current) return;
+
+    const rect = ref.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className="card-project group cursor-pointer"
+      style={{
+        rotateY,
+        rotateX,
+        transformStyle: "preserve-3d",
+      }}
+      className="card-project group cursor-pointer perspective-1000"
     >
-      <div className="relative aspect-video overflow-hidden">
+      <div 
+        style={{ transform: "translateZ(20px)" }}
+        className="relative aspect-video overflow-hidden rounded-lg shadow-xl"
+      >
         <img
           src={image}
           alt={title}
@@ -45,7 +91,10 @@ const ProjectCard = ({ title, category, image, type, index }: ProjectCardProps) 
         </div>
       </div>
       
-      <div className="p-6">
+      <div 
+        style={{ transform: "translateZ(50px)" }}
+        className="p-6 relative z-10"
+      >
         <p className="text-muted-foreground text-xs uppercase tracking-[0.2em] mb-2">
           {category}
         </p>

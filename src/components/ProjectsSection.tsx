@@ -53,6 +53,8 @@ const projects = [
   },
 ];
 
+import { RevealText } from "./RevealText";
+
 const ProjectsSection = () => {
   return (
     <section id="projects" className="py-24 bg-background">
@@ -68,7 +70,8 @@ const ProjectsSection = () => {
             Portfólio
           </span>
           <h2 className="section-title">
-            PROJETOS EM <span className="text-gradient-gold">DESTAQUE</span>
+            <RevealText text="PROJETOS EM" className="mr-3" />
+            <RevealText text="DESTAQUE" className="text-white" delay={0.2} />
           </h2>
         </motion.div>
 
