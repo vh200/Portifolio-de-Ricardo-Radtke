@@ -61,9 +61,9 @@ export default {
         "gold-glow": "hsl(var(--gold-glow))",
       },
       fontFamily: {
-        sans: ["Switzer", "sans-serif"],
-        display: ["Switzer", "sans-serif"],
-        body: ["Switzer", "sans-serif"],
+        sans: ["Outfit", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
+        body: ["Outfit", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -48,7 +48,7 @@ const AboutSection = () => {
             <h2 className="section-title mb-8">
               CONTANDO HISTÓRIAS
               <br />
-              <span className="text-white">ATRAVÉS DAS LENTES</span>
+              <span className="text-white/80">ATRAVÉS DAS LENTES</span>
             </h2>
             <div className="space-y-6 text-muted-foreground font-light leading-relaxed">
               <p>

@@ -68,11 +68,11 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Switzer', sans-serif;
+    font-family: 'Outfit', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Switzer', sans-serif;
+    font-family: 'Outfit', sans-serif;
     letter-spacing: 0.05em;
   }
 }
@@ -105,7 +105,7 @@
   }
 
   .section-title {
-    @apply text-5xl md:text-7xl font-bold tracking-wider;
+    @apply text-5xl md:text-7xl font-bold tracking-wider text-muted-foreground;
   }
 
   .nav-link {

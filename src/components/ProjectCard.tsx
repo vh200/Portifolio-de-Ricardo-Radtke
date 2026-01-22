@@ -89,6 +89,34 @@ const ProjectCard = ({ title, category, image, type, index }: ProjectCardProps) 
             {type === "video" ? "Vídeo" : "Foto"}
           </span>
         </div>
+
+        {/* Admin Controls */}
+        {session && (
+          <div className="absolute top-4 right-4 z-20 flex gap-2">
+            <Button
+              size="icon"
+              variant="secondary"
+              className="h-8 w-8 bg-background/80 backdrop-blur hover:bg-white text-foreground"
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit?.({ id, title, category, image_url: image, type });
+              }}
+            >
+              <Edit2 size={14} />
+            </Button>
+            <Button
+              size="icon"
+              variant="destructive"
+              className="h-8 w-8 opacity-80 hover:opacity-100"
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete?.(id, image);
+              }}
+            >
+              <Trash2 size={14} />
+            </Button>
+          </div>
+        )}
       </div>
       
       <div 

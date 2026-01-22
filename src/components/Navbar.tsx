@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Instagram, Youtube, Mail } from "lucide-react";
+import { Menu, X, Instagram, Youtube, Mail, LogOut } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const auth = useAuth();
+  const session = auth?.session;
+  const signOut = auth?.signOut;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +39,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <motion.a
             href="#hero"
-            className="font-display text-2xl tracking-wider text-foreground hover:text-primary transition-colors"
+            className="text-sm uppercase tracking-[0.2em] text-muted-foreground hover:text-primary transition-colors font-medium"
             whileHover={{ scale: 1.05 }}
           >
             RICARDO RADTKE
@@ -62,6 +67,17 @@ const Navbar = () => {
               >
                 <Youtube size={18} />
               </a>
+              {session && (
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => signOut && signOut()} 
+                  className="text-muted-foreground hover:text-destructive transition-colors ml-2"
+                  title="Sair do modo Admin"
+                >
+                  <LogOut size={18} />
+                </Button>
+              )}
             </div>
           </div>
 
@@ -91,6 +107,17 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            {session && (
+              <button
+                onClick={() => {
+                  signOut();
+                  setIsOpen(false);
+                }}
+                className="nav-link text-lg text-left text-destructive flex items-center gap-2"
+              >
+                <LogOut size={18} /> Sair
+              </button>
+            )}
             <div className="flex items-center gap-4 pt-4 border-t border-border">
               <a
                 href="https://instagram.com/ricardoradtke_"

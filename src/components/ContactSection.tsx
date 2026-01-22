@@ -21,8 +21,7 @@ const ContactSection = () => {
             Contato
           </span>
           <h2 className="section-title">
-            <RevealText text="VAMOS CRIAR" className="mr-3" />
-            <RevealText text="JUNTOS" className="text-white" delay={0.2} />
+            VAMOS CRIAR <span className="text-white/80">JUNTOS</span>
           </h2>
           <p className="text-muted-foreground mt-6 max-w-2xl mx-auto font-light">
             Tem um projeto em mente? Entre em contato para discutirmos como posso 

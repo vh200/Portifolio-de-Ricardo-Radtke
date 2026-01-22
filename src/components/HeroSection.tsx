@@ -206,10 +206,8 @@ const HeroSection = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="flex flex-col items-center justify-center relative w-full"
         >
-           <h1 className="font-display text-7xl md:text-9xl lg:text-[11rem] tracking-tighter mix-blend-difference text-white leading-none pointer-events-none select-none">
-            RICARDO
-            <br />
-            RADTKE
+           <h1 className="font-display text-4xl md:text-6xl lg:text-8xl xl:text-9xl tracking-tighter text-muted-foreground hover:text-white transition-colors duration-300 leading-none select-none whitespace-nowrap cursor-default hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]">
+            RICARDO RADTKE
           </h1>
           <p className="text-white/60 uppercase tracking-[0.4em] text-sm md:text-base font-medium mt-8 mix-blend-difference pointer-events-none">
             Filmmaker & Cinematographer
